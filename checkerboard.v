@@ -10,9 +10,15 @@ module checkerboard(
 
 );
 parameter white = 16'b1111111111111111;
-parameter black = 16'b0;
+parameter black = 16'b0000000000000000;
+
 parameter red = 16'hF800;
-parameter blue = 16'h001F; //蓝色
+parameter orange = 16'hFC00; 
+parameter yellow = 16'hFFE0;
+parameter green = 16'h07E0;
+parameter cyan = 16'h07FF;
+parameter blue = 16'h001F;
+parameter purple = 16'hF81F;
 
 integer i,j;
 
@@ -40,8 +46,18 @@ always@(posedge vga_clk or negedge sys_rst_n)begin
 		else	begin 				//方格内赋值
 			for(i=0; i<108; i=i+1)begin
 				for(j=0; j<16 ;j=j+1)begin
-					if(game_state_out[(y*12)+x] == 1)
-						pix_data <= white;
+					if(game_state_out[(y*12)+x] == 1)begin
+						case(color)
+							0 : pix_data <= red;
+							1 : pix_data <= orange;
+							2 : pix_data <= yellow;
+							3 : pix_data <= green;
+							4 : pix_data <= cyan;
+							5 : pix_data <= blue;
+							6 : pix_data <= purple;
+							default : pix_data <= black;
+						endcase
+					end
 					else
 						pix_data <= black;
 				end
@@ -51,12 +67,14 @@ always@(posedge vga_clk or negedge sys_rst_n)begin
 		pix_data <= black;
 end
 
+wire [2:0] color; //颜色计数器线
 
 life_game u_life_game(
 	.sys_rst_n(sys_rst_n),
 	.vga_clk(vga_clk),
 	.vsync(vsync),
-	.game_state_out(game_state_out)
+	.game_state_out(game_state_out),
+	.color(color)
 );
 
 endmodule
