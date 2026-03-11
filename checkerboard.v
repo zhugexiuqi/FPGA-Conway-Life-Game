@@ -1,6 +1,6 @@
 module checkerboard(
 
-	//input sys_clk,
+	input sys_clk,
 	input vga_clk , 
 	input sys_rst_n , 
 	input [9:0] pix_x , 
@@ -47,6 +47,8 @@ always@(posedge vga_clk or negedge sys_rst_n)begin
 			for(i=0; i<108; i=i+1)begin
 				for(j=0; j<16 ;j=j+1)begin
 					if(game_state_out[(y*12)+x] == 1)begin
+						//跳变色彩
+						/*
 						case(color)
 							0 : pix_data <= red;
 							1 : pix_data <= orange;
@@ -57,6 +59,12 @@ always@(posedge vga_clk or negedge sys_rst_n)begin
 							6 : pix_data <= purple;
 							default : pix_data <= black;
 						endcase
+						*/
+						
+						//掩膜滚动渐变
+						
+						pix_data <= moving_color;
+						
 					end
 					else
 						pix_data <= black;
@@ -75,6 +83,21 @@ life_game u_life_game(
 	.vsync(vsync),
 	.game_state_out(game_state_out),
 	.color(color)
+);
+
+
+//颜色滚动模块
+
+wire [15:0] moving_color;
+
+color_gradient u_color_gradient(
+ .sys_clk(sys_clk),
+ .vga_clk (vga_clk ), //输入工作时钟,频率25MHz,1bit
+ .sys_rst_n (sys_rst_n ), //输入复位信号,低电平有效,1bit
+ .pix_x (pix_x ), //输入VGA有效显示区域像素点X轴坐标,10bit
+ .pix_y (pix_y ), //输入VGA有效显示区域像素点Y轴坐标,10bit
+ .vsync(vsync),
+ .moving_color (moving_color) //输出像素点色彩信息,16bit
 );
 
 endmodule
