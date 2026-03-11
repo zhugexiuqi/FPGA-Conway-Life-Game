@@ -25,3 +25,18 @@ the color of the block changes periodically, the order is
 		6 : pix_data <= purple;
 		default : pix_data <= black;
 	endcase
+
+# block with dynamic gradient color
+
+the colorgradient module generates dynaic gradient color.
+
+the triangle waveform scan through the screen in time, the amplitude of the waveform decideds the intensity of R, G, B.
+
+<img width="426" height="320" alt="1" src="https://github.com/user-attachments/assets/47a59de8-b304-4bcf-85f9-81fd8395f8e9" />
+<img width="426" height="320" alt="2" src="https://github.com/user-attachments/assets/b0095afb-c989-4309-8823-66f214868ef7" />
+<img width="426" height="320" alt="3" src="https://github.com/user-attachments/assets/a918329f-9b03-490d-b1f1-764ffb05769b" />
+<img width="426" height="320" alt="4" src="https://github.com/user-attachments/assets/6861a707-738e-43e9-b07d-5331288b5e79" />
+
+
+
+
