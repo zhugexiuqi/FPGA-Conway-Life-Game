@@ -2,7 +2,8 @@ module life_game(
 	input vga_clk,
 	input sys_rst_n,
 	input vsync,
-	output reg [107:0] game_state_out //12*9 = 108个格子
+	output reg [107:0] game_state_out, //12*9 = 108个格子
+	output reg [2:0] color
 );
 
 integer i, j, a,b,x,y;
@@ -21,14 +22,16 @@ initial begin : init_map
         end
     end
 	 
-    /*振荡器
+	 //振荡器
+    
     game_state_init[5][6] = 1;
     game_state_init[5][7] = 1;
     game_state_init[5][8] = 1;
-	 */
+	 
 	 
 	 
 	 //滑翔机
+	 /*
 	 game_state_init[1][2] = 1;
 	 game_state_init[1][5] = 1;
 	 game_state_init[2][1] = 1;
@@ -38,6 +41,7 @@ initial begin : init_map
 	 game_state_init[4][2] = 1;
 	 game_state_init[4][3] = 1;
 	 game_state_init[4][4] = 1;
+	 */
 end
 
 ////////////////////////更新输出
@@ -136,6 +140,15 @@ always@(posedge vga_clk or negedge sys_rst_n)begin
 		end
 		
 	end
+end
+
+always@(posedge vga_clk or negedge sys_rst_n)begin   //颜色计数器
+	if(!sys_rst_n)
+		color <= 0;
+	else if(color == 6)
+		color <= 0;
+	else if(sec_clk_edge & sec_clk)
+		color <= color + 1;
 end
 
 second_clk u_second_clk(   //获得秒信号
