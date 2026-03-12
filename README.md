@@ -18,6 +18,14 @@ checkerboard_1.v
 
 the color of the block changes periodically, the order is
 
+<img width="426" height="320" alt="微信图片_20260312111524_264_386" src="https://github.com/user-attachments/assets/3579b1a0-1457-4e6d-82e0-13ae96f87fd3" />
+
+<img width="426" height="320" alt="微信图片_20260312111538_266_386" src="https://github.com/user-attachments/assets/89680607-9a6b-43f6-b5a5-07ecd829a5bb" />
+
+<img width="426" height="320" alt="微信图片_20260312111539_267_386" src="https://github.com/user-attachments/assets/ba9bdc71-6775-4bed-9719-fc5025941102" />
+
+<img width="426" height="320" alt="微信图片_20260312111540_268_386" src="https://github.com/user-attachments/assets/aa99e49e-8677-439c-ba69-0bac54003112" />
+
     case(color)
 		0 : pix_data <= red;
 		1 : pix_data <= orange;
