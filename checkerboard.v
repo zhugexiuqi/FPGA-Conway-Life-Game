@@ -92,12 +92,13 @@ wire [15:0] moving_color;
 
 color_gradient u_color_gradient(
  .sys_clk(sys_clk),
- .vga_clk (vga_clk ), //输入工作时钟,频率25MHz,1bit
- .sys_rst_n (sys_rst_n ), //输入复位信号,低电平有效,1bit
- .pix_x (pix_x ), //输入VGA有效显示区域像素点X轴坐标,10bit
- .pix_y (pix_y ), //输入VGA有效显示区域像素点Y轴坐标,10bit
+ .vga_clk (vga_clk ),
+ .sys_rst_n (sys_rst_n ), 
+ .pix_x (pix_x ), 
+ .pix_y (pix_y ), 
  .vsync(vsync),
- .moving_color (moving_color) //输出像素点色彩信息,16bit
+ .moving_color (moving_color)
 );
 
 endmodule
+
