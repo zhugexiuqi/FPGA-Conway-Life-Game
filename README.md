@@ -14,7 +14,6 @@ for example, if you want to create a simplest osc, substitute with following cod
 the board has periodic boundary condition, which means if a block is moving right, when its x_position is 8, it will goes to 0.(remember the checkerboard has 9 col, 0-8)
 
 # block color changes per s
-checkerboard_1.v
 
 <img width="426" height="320" alt="微信图片_20260312111524_264_386" src="https://github.com/user-attachments/assets/3579b1a0-1457-4e6d-82e0-13ae96f87fd3" />
 
@@ -38,7 +37,7 @@ the color of the block changes periodically, the order is
 	endcase
 
 # block with dynamic gradient color
-checkboar_2.v
+
 the colorgradient module generates dynaic gradient color.
 
 the triangle waveform scan through the screen in time, the amplitude of the waveform decideds the intensity of R, G, B.
