@@ -10,12 +10,6 @@ module color_gradient(
 
 );
 
-parameter H_VALID = 10'd640 , //行有效数据
-V_VALID = 10'd480 ; //列有效数据
-
-
-
-
 always@(posedge vga_clk or negedge sys_rst_n)begin
 	if(!sys_rst_n)
 		moving_color <= 0;
@@ -68,5 +62,6 @@ rom_ip	rom_ip_inst3(
 	.clock (sys_clk),
 	.q (q3)
 );
+
 
 endmodule
